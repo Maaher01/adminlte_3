@@ -19,7 +19,7 @@ class SideDrawer extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 38.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               color: darkColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
