@@ -21,7 +21,7 @@ class Footer extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Copyright © 2024 Softin Technology Ltd.',
+                    'Copyright © 2024 ',
                     style: TextStyle(
                       color: darkColor,
                       fontWeight: FontWeight.bold,
@@ -29,7 +29,15 @@ class Footer extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    ' All rights reserved.',
+                    'Softin Technology Ltd',
+                    style: TextStyle(
+                      color: Color(0xff007bff),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  Text(
+                    '. All rights reserved.',
                     style: TextStyle(
                       color: darkColor,
                       fontSize: 16.0,
