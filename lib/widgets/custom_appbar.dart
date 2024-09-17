@@ -6,19 +6,19 @@ class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   const CustomAppbar({super.key});
 
   @override
-  _CustomAppbarState createState() => _CustomAppbarState();
+  CustomAppbarState createState() => CustomAppbarState();
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class _CustomAppbarState extends State<CustomAppbar> {
+class CustomAppbarState extends State<CustomAppbar> {
   bool _isSearching = false;
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void dispose() {
-    _searchController.dispose();
+    searchController.dispose();
     super.dispose();
   }
 
@@ -55,7 +55,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
           ? SizedBox(
               height: 32,
               child: TextField(
-                controller: _searchController,
+                controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search',
                   hintStyle: const TextStyle(fontSize: 13),
@@ -71,10 +71,12 @@ class _CustomAppbarState extends State<CustomAppbar> {
                       size: 17,
                     ),
                     onPressed: () {
-                      setState(() {
-                        _isSearching = false;
-                        _searchController.clear();
-                      });
+                      setState(
+                        () {
+                          _isSearching = false;
+                          searchController.clear();
+                        },
+                      );
                     },
                   ),
                 ),
@@ -86,9 +88,11 @@ class _CustomAppbarState extends State<CustomAppbar> {
         if (!_isSearching)
           IconButton(
             onPressed: () {
-              setState(() {
-                _isSearching = true;
-              });
+              setState(
+                () {
+                  _isSearching = true;
+                },
+              );
             },
             icon: const Icon(
               Icons.search,
@@ -137,19 +141,23 @@ class _CustomAppbarState extends State<CustomAppbar> {
                                 ),
                                 Text('Call me whenever you can',
                                     style: TextStyle(fontSize: 13)),
-                                Row(children: [
-                                  Icon(
-                                    Icons.watch_later_outlined,
-                                    color: darkColor,
-                                    size: 18,
-                                  ),
-                                  SizedBox(
-                                    width: 6.0,
-                                  ),
-                                  Text('4 Hours Ago',
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.watch_later_outlined,
+                                      color: darkColor,
+                                      size: 18,
+                                    ),
+                                    SizedBox(
+                                      width: 6.0,
+                                    ),
+                                    Text(
+                                      '4 Hours Ago',
                                       style: TextStyle(
-                                          fontSize: 13.5, color: darkColor))
-                                ])
+                                          fontSize: 13.5, color: darkColor),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
                             const Expanded(
@@ -196,19 +204,21 @@ class _CustomAppbarState extends State<CustomAppbar> {
                                 ),
                                 Text('Message received',
                                     style: TextStyle(fontSize: 13)),
-                                Row(children: [
-                                  Icon(
-                                    Icons.watch_later_outlined,
-                                    size: 18,
-                                    color: darkColor,
-                                  ),
-                                  SizedBox(
-                                    width: 6.0,
-                                  ),
-                                  Text('4 Hours Ago',
-                                      style: TextStyle(
-                                          fontSize: 13.5, color: darkColor))
-                                ])
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.watch_later_outlined,
+                                      size: 18,
+                                      color: darkColor,
+                                    ),
+                                    SizedBox(
+                                      width: 6.0,
+                                    ),
+                                    Text('4 Hours Ago',
+                                        style: TextStyle(
+                                            fontSize: 13.5, color: darkColor))
+                                  ],
+                                ),
                               ],
                             ),
                             const Expanded(
@@ -254,19 +264,21 @@ class _CustomAppbarState extends State<CustomAppbar> {
                                 ),
                                 Text('Call me whenever you can',
                                     style: TextStyle(fontSize: 13)),
-                                Row(children: [
-                                  Icon(
-                                    Icons.watch_later_outlined,
-                                    size: 18,
-                                    color: darkColor,
-                                  ),
-                                  SizedBox(
-                                    width: 6.0,
-                                  ),
-                                  Text('4 Hours Ago',
-                                      style: TextStyle(
-                                          fontSize: 13.5, color: darkColor))
-                                ])
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.watch_later_outlined,
+                                      size: 18,
+                                      color: darkColor,
+                                    ),
+                                    SizedBox(
+                                      width: 6.0,
+                                    ),
+                                    Text('4 Hours Ago',
+                                        style: TextStyle(
+                                            fontSize: 13.5, color: darkColor))
+                                  ],
+                                ),
                               ],
                             ),
                             const Expanded(

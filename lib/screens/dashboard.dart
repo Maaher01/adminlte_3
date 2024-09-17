@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
+import '../constants.dart';
 import '../widgets/footer.dart';
 import '../widgets/side_drawer.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/sales_section.dart';
 import '../widgets/visitors_section.dart';
 import '../widgets/statistics_grid.dart';
-
-import '../constants.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -31,22 +29,26 @@ class _DashboardState extends State<Dashboard> {
         }
 
         return Scaffold(
-            appBar: const PreferredSize(
-              preferredSize: Size.fromHeight(kToolbarHeight),
-              child: CustomAppbar(),
-            ),
-            drawer: constraints.maxWidth < 992 ? const SideDrawer() : null,
-            body: Stack(
-              children: [
-                Column(
+          appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(kToolbarHeight),
+            child: CustomAppbar(),
+          ),
+          drawer: constraints.maxWidth < 992 ? const SideDrawer() : null,
+          body: Column(
+            children: [
+              Expanded(
+                child: Row(
                   children: [
+                    if (constraints.maxWidth >= 992) const SideDrawer(),
                     Expanded(
-                      child: Row(
-                        children: [
-                          if (constraints.maxWidth >= 992) const SideDrawer(),
-                          Expanded(
-                            child: Container(
-                              color: bgColor,
+                      child: Container(
+                        color: bgColor,
+                        child: SingleChildScrollView(
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minHeight: constraints.maxHeight,
+                            ),
+                            child: IntrinsicHeight(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -67,38 +69,65 @@ class _DashboardState extends State<Dashboard> {
                                       child: Column(
                                         children: [
                                           SizedBox(
-                                              height: 140,
-                                              child: StatisticsGrid(
-                                                  crossAxisCount:
-                                                      crossAxisCount)),
-                                          const SizedBox(height: 10.0),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              SalesSection(),
-                                              const SizedBox(
-                                                width: 20.0,
-                                              ),
-                                              VisitorsSection()
-                                            ],
+                                            height: constraints.maxWidth >= 992
+                                                ? 140
+                                                : constraints.maxWidth >= 768
+                                                    ? 335
+                                                    : 525,
+                                            child: StatisticsGrid(
+                                                crossAxisCount: crossAxisCount),
                                           ),
+                                          const SizedBox(height: 10.0),
+                                          constraints.maxWidth >= 992
+                                              ? Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    SalesSection(
+                                                      width:
+                                                          constraints.maxWidth *
+                                                              0.42,
+                                                    ),
+                                                    const SizedBox(width: 20.0),
+                                                    VisitorsSection(
+                                                      width:
+                                                          constraints.maxWidth *
+                                                              0.42,
+                                                    ),
+                                                  ],
+                                                )
+                                              : Column(
+                                                  children: [
+                                                    SalesSection(
+                                                      width:
+                                                          constraints.maxWidth,
+                                                    ),
+                                                    const SizedBox(
+                                                        height: 20.0),
+                                                    VisitorsSection(
+                                                      width:
+                                                          constraints.maxWidth,
+                                                    ),
+                                                  ],
+                                                ),
                                         ],
                                       ),
                                     ),
                                   ),
+                                  const Footer()
                                 ],
                               ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                    const Footer(),
                   ],
                 ),
-              ],
-            ));
+              ),
+            ],
+          ),
+        );
       },
     );
   }

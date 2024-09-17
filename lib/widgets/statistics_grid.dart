@@ -10,10 +10,11 @@ class StatisticsGrid extends StatelessWidget {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          crossAxisSpacing: 19.0,
-          mainAxisSpacing: 16.0,
-          childAspectRatio: 3.0),
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: 19.0,
+        mainAxisSpacing: 16.0,
+        childAspectRatio: 3.0,
+      ),
       itemCount: 4,
       itemBuilder: (context, index) {
         return Container(

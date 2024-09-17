@@ -18,32 +18,28 @@ class Footer extends StatelessWidget {
           child: const Wrap(
             alignment: WrapAlignment.start,
             children: [
-              Row(
-                children: [
-                  Text(
-                    'Copyright © 2024 ',
-                    style: TextStyle(
-                      color: darkColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  Text(
-                    'Softin Technology Ltd',
-                    style: TextStyle(
-                      color: Color(0xff007bff),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  Text(
-                    '. All rights reserved.',
-                    style: TextStyle(
-                      color: darkColor,
-                      fontSize: 16.0,
-                    ),
-                  )
-                ],
+              Text(
+                'Copyright © 2024 ',
+                style: TextStyle(
+                  color: darkColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
+              ),
+              Text(
+                'Softin Technology Ltd',
+                style: TextStyle(
+                  color: Color(0xff007bff),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
+              ),
+              Text(
+                '. All rights reserved.',
+                style: TextStyle(
+                  color: darkColor,
+                  fontSize: 16.0,
+                ),
               ),
             ],
           ),
