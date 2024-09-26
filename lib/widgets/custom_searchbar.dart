@@ -31,12 +31,13 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                     decoration: InputDecoration(
                       hintText: 'Search',
                       hintStyle: TextStyle(
-                          color: bgColor,
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16),
+                        color: bgColor,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 16,
+                      ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(
-                        vertical: 14.0,
+                        vertical: 13.0,
                         horizontal: 14.0,
                       ),
                     ),

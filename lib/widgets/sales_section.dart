@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/sales_graph.dart';
+import '../widgets/sales_piechart.dart';
 import '../constants.dart';
 
 class SalesSection extends StatefulWidget {
@@ -113,9 +115,9 @@ class SalesSectionState extends State<SalesSection>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: const [
-                Center(child: Text('Graph content here')),
-                Center(child: Text('Pie Chart content here')),
+              children: [
+                const Center(child: SalesGraph()),
+                Center(child: SalesPieChart()),
               ],
             ),
           ),

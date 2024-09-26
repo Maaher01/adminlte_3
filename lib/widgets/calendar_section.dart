@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import '../widgets/calendar_main.dart';
 
-class VisitorsSection extends StatefulWidget {
+class CalendarSection extends StatefulWidget {
   final double width;
 
-  const VisitorsSection({super.key, required this.width});
+  const CalendarSection({super.key, required this.width});
 
   @override
-  VisitorsSectionState createState() => VisitorsSectionState();
+  CalendarSectionState createState() => CalendarSectionState();
 }
 
-class VisitorsSectionState extends State<VisitorsSection> {
+class CalendarSectionState extends State<CalendarSection> {
   bool _isMinimized = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: widget.width,
-      height: _isMinimized ? 55 : 450,
+      height: _isMinimized ? 55 : 385,
       decoration: BoxDecoration(
-        color: const Color(0xff238dff),
+        color: const Color(0xff44b25e),
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Column(
@@ -32,14 +33,14 @@ class VisitorsSectionState extends State<VisitorsSection> {
                 const Row(
                   children: [
                     Icon(
-                      Icons.location_on,
+                      Icons.calendar_month,
                       color: Colors.white,
                     ),
                     SizedBox(
                       width: 2.0,
                     ),
                     Text(
-                      'Visitors',
+                      'Calendar',
                       style: TextStyle(color: Colors.white, fontSize: 17),
                     )
                   ],
@@ -51,7 +52,7 @@ class VisitorsSectionState extends State<VisitorsSection> {
                     height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(2.0),
-                      color: const Color(0xff0069d9),
+                      color: const Color(0xff218838),
                     ),
                     alignment: Alignment.center,
                     child: IconButton(
@@ -61,17 +62,24 @@ class VisitorsSectionState extends State<VisitorsSection> {
                           _isMinimized = !_isMinimized;
                         });
                       },
-                      icon: const Icon(
-                        Icons.remove,
-                        color: Colors.white,
-                        size: 18,
-                      ),
+                      icon: _isMinimized
+                          ? const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 18,
+                            )
+                          : const Icon(
+                              Icons.remove,
+                              color: Colors.white,
+                              size: 18,
+                            ),
                     ),
                   ),
                 )
               ],
             ),
-          )
+          ),
+          if (!_isMinimized) const Calendar(),
         ],
       ),
     );
