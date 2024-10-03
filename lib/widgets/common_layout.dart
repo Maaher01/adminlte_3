@@ -24,7 +24,7 @@ class CommonLayout extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(child: body),
-                    const Footer(),
+                    Footer(),
                   ],
                 ),
               ),

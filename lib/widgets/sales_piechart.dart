@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import '../models/chart_data.dart';
 
 class SalesPieChart extends StatefulWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  SalesPieChart({super.key});
+  const SalesPieChart({super.key});
 
   @override
   SalesPieChartState createState() => SalesPieChartState();
@@ -30,18 +30,12 @@ class SalesPieChartState extends State<SalesPieChart> {
       tooltipBehavior: _tooltip,
       series: <CircularSeries<ChartData, String>>[
         DoughnutSeries<ChartData, String>(
-            dataSource: data,
-            xValueMapper: (ChartData data, _) => data.x,
-            yValueMapper: (ChartData data, _) => data.y,
-            name: 'Gold')
+          dataSource: data,
+          xValueMapper: (ChartData data, _) => data.x,
+          yValueMapper: (ChartData data, _) => data.y,
+          name: 'Gold',
+        )
       ],
     );
   }
-}
-
-class ChartData {
-  ChartData(this.x, this.y);
-
-  final String x;
-  final double y;
 }

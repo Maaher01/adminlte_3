@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../utils/label_helper.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({super.key});
@@ -89,19 +90,19 @@ class SideDrawer extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            _buildLabel(
+                            buildLabel(
                               context: context,
                               label: 'Important',
                               color: Colors.blue,
                               route: '/important',
                             ),
-                            _buildLabel(
+                            buildLabel(
                               context: context,
                               label: 'Spam',
                               color: Colors.red,
                               route: '/spam',
                             ),
-                            _buildLabel(
+                            buildLabel(
                               context: context,
                               label: 'International',
                               color: Colors.yellow,
@@ -115,34 +116,6 @@ class SideDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLabel(
-      {required BuildContext context,
-      required String label,
-      required Color color,
-      required String route}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, route);
-        },
-        child: Row(
-          children: [
-            Icon(
-              Icons.circle_outlined,
-              color: color,
-            ),
-            const SizedBox(width: 12.0),
-            Text(
-              label,
-              style: const TextStyle(color: Colors.grey, fontSize: 17.0),
-            )
           ],
         ),
       ),

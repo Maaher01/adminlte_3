@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'AdminLTE 3',
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => const Dashboard(),
@@ -23,8 +25,6 @@ class MyApp extends StatelessWidget {
         '/spam': (context) => const SpamMails(),
         '/international': (context) => const InternationalMails(),
       },
-      title: 'AdminLTE 3',
-      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -443,7 +443,9 @@ class CustomAppbarState extends State<CustomAppbar> {
                             Text(
                               'Profile',
                               style: TextStyle(
-                                  fontSize: 15.0, fontWeight: FontWeight.w400),
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ],
                         ),
@@ -489,8 +491,10 @@ class CustomAppbarState extends State<CustomAppbar> {
                         SizedBox(
                           width: 12.0,
                         ),
-                        Text('Logout',
-                            style: TextStyle(fontWeight: FontWeight.w400)),
+                        Text(
+                          'Logout',
+                          style: TextStyle(fontWeight: FontWeight.w400),
+                        ),
                       ],
                     ),
                   ],
@@ -507,7 +511,7 @@ class CustomAppbarState extends State<CustomAppbar> {
             ),
           ),
         ),
-        const SizedBox(width: 16.0),
+        SizedBox(width: MediaQuery.of(context).size.width * 0.0025),
       ],
     );
   }

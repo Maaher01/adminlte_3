@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({super.key});
+  final year = DateTime.now().year;
+
+  Footer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +17,18 @@ class Footer extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.all(16.0),
-          child: const Wrap(
+          child: Wrap(
             alignment: WrapAlignment.start,
             children: [
               Text(
-                'Copyright © 2024 ',
-                style: TextStyle(
+                'Copyright © $year ',
+                style: const TextStyle(
                   color: darkColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0,
                 ),
               ),
-              Text(
+              const Text(
                 'Softin Technology Ltd',
                 style: TextStyle(
                   color: Color(0xff007bff),
@@ -34,7 +36,7 @@ class Footer extends StatelessWidget {
                   fontSize: 16.0,
                 ),
               ),
-              Text(
+              const Text(
                 '. All rights reserved.',
                 style: TextStyle(
                   color: darkColor,

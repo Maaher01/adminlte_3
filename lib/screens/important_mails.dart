@@ -7,11 +7,12 @@ class ImportantMails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CommonLayout(
-        body: Center(
-      child: Text(
-        'These are the important mails',
-        style: TextStyle(fontSize: 20),
+      body: Center(
+        child: Text(
+          'These are the important mails',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
-    ));
+    );
   }
 }

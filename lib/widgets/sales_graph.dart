@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import '../models/sales_data.dart';
 
 class SalesGraph extends StatefulWidget {
   const SalesGraph({super.key});
@@ -24,51 +25,34 @@ class SalesGraphState extends State<SalesGraph> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //Initialize the chart widget
         SfCartesianChart(
-            primaryXAxis: const CategoryAxis(),
-            // Chart title
-            // title: const ChartTitle(text: 'Half yearly sales analysis'),
-            // Enable legend
-            legend: const Legend(isVisible: false),
-            // Enable tooltip
-            tooltipBehavior: TooltipBehavior(enable: true),
-            series: <CartesianSeries<SalesData, String>>[
-              LineSeries<SalesData, String>(
-                  dataSource: data,
-                  xValueMapper: (SalesData sales, _) => sales.month,
-                  yValueMapper: (SalesData sales, _) => sales.sales,
-                  name: 'Sales',
-                  // Enable data label
-                  dataLabelSettings: const DataLabelSettings(isVisible: true))
-            ]),
+          primaryXAxis: const CategoryAxis(),
+          legend: const Legend(isVisible: false),
+          tooltipBehavior: TooltipBehavior(enable: true),
+          series: <CartesianSeries<SalesData, String>>[
+            LineSeries<SalesData, String>(
+              dataSource: data,
+              xValueMapper: (SalesData sales, _) => sales.month,
+              yValueMapper: (SalesData sales, _) => sales.sales,
+              name: 'Sales',
+              dataLabelSettings: const DataLabelSettings(isVisible: true),
+            ),
+          ],
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            //Initialize the spark charts widget
             child: SfSparkLineChart.custom(
-              //Enable the trackball
               trackball: const SparkChartTrackball(
-                  activationMode: SparkChartActivationMode.tap),
-              //Enable marker
+                activationMode: SparkChartActivationMode.tap,
+              ),
               marker: const SparkChartMarker(
-                  displayMode: SparkChartMarkerDisplayMode.all),
-              //Enable data label
-              // labelDisplayMode: SparkChartLabelDisplayMode.all,
-              // xValueMapper: (int index) => data[index].month,
-              // yValueMapper: (int index) => data[index].sales,
-              // dataCount: 5,
+                displayMode: SparkChartMarkerDisplayMode.all,
+              ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
-}
-
-class SalesData {
-  SalesData(this.month, this.sales);
-
-  final String month;
-  final double sales;
 }

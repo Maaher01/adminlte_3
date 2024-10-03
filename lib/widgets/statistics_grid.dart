@@ -7,13 +7,28 @@ class StatisticsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    double childAspectRatio;
+    if (screenWidth > 1400) {
+      childAspectRatio = 3;
+    } else if (screenWidth > 992) {
+      childAspectRatio = 2;
+    } else if (screenWidth > 768) {
+      childAspectRatio = 3;
+    } else if (screenWidth > 576) {
+      childAspectRatio = 3.5;
+    } else {
+      childAspectRatio = 1.5;
+    }
+
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        crossAxisSpacing: 19.0,
+        crossAxisSpacing: 15.0,
         mainAxisSpacing: 16.0,
-        childAspectRatio: 3.0,
+        childAspectRatio: childAspectRatio,
       ),
       itemCount: 4,
       itemBuilder: (context, index) {
@@ -44,50 +59,82 @@ class StatisticsGrid extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      index == 0
-                          ? '150'
-                          : index == 1
-                              ? '53%'
-                              : index == 2
-                                  ? '44'
-                                  : '65',
-                      style: const TextStyle(
-                          fontSize: 36.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+                    (screenWidth > 1350)
+                        ? Text(
+                            index == 0
+                                ? '150'
+                                : index == 1
+                                    ? '53%'
+                                    : index == 2
+                                        ? '44'
+                                        : '65',
+                            style: const TextStyle(
+                                fontSize: 36.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )
+                        : Text(
+                            index == 0
+                                ? '150'
+                                : index == 1
+                                    ? '53%'
+                                    : index == 2
+                                        ? '44'
+                                        : '65',
+                            style: const TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                     const SizedBox(height: 10.0),
-                    Text(
-                      index == 0
-                          ? 'New Orders'
-                          : index == 1
-                              ? 'Bounce Rate'
-                              : index == 2
-                                  ? 'User Registrations'
-                                  : 'Unique Visitors',
-                      style:
-                          const TextStyle(fontSize: 16.0, color: Colors.white),
-                    ),
+                    screenWidth > 1400
+                        ? Text(
+                            index == 0
+                                ? 'New Orders'
+                                : index == 1
+                                    ? 'Bounce Rate'
+                                    : index == 2
+                                        ? 'User Registrations'
+                                        : 'Unique Visitors',
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(
+                            index == 0
+                                ? 'New Orders'
+                                : index == 1
+                                    ? 'Bounce Rate'
+                                    : index == 2
+                                        ? 'User Registrations'
+                                        : 'Unique Visitors',
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.white,
+                            ),
+                          ),
                   ],
                 ),
-                Icon(
-                  index == 0
-                      ? Icons.shopping_bag_outlined
-                      : index == 1
-                          ? Icons.signal_cellular_alt_outlined
-                          : index == 2
-                              ? Icons.person_add
-                              : Icons.pie_chart,
-                  color: index == 0
-                      ? const Color(0xff148a9d)
-                      : index == 1
-                          ? const Color(0xff228e3b)
-                          : index == 2
-                              ? const Color(0xffd9a406)
-                              : const Color(0xffbb2d3b),
-                  size: 84,
-                ),
+                if (screenWidth > 768)
+                  Icon(
+                    index == 0
+                        ? Icons.shopping_bag_outlined
+                        : index == 1
+                            ? Icons.signal_cellular_alt_outlined
+                            : index == 2
+                                ? Icons.person_add
+                                : Icons.pie_chart,
+                    color: index == 0
+                        ? const Color(0xff148a9d)
+                        : index == 1
+                            ? const Color(0xff228e3b)
+                            : index == 2
+                                ? const Color(0xffd9a406)
+                                : const Color(0xffbb2d3b),
+                    size: 72,
+                  ),
               ],
             ),
           ),

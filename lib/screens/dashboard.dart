@@ -19,10 +19,8 @@ class _DashboardState extends State<Dashboard> {
         int crossAxisCount;
         if (constraints.maxWidth >= 992) {
           crossAxisCount = 4;
-        } else if (constraints.maxWidth >= 768) {
-          crossAxisCount = 2;
         } else {
-          crossAxisCount = 1;
+          crossAxisCount = 2;
         }
 
         return CommonLayout(
@@ -48,30 +46,44 @@ class _DashboardState extends State<Dashboard> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 8.0),
+                          horizontal: 18.0,
+                        ),
                         child: Column(
                           children: [
                             SizedBox(
-                              height: constraints.maxWidth >= 992
-                                  ? 140
-                                  : constraints.maxWidth >= 768
-                                      ? 335
-                                      : 525,
+                              height: constraints.maxWidth >= 1400
+                                  ? 135
+                                  : constraints.maxWidth >= 992
+                                      ? 110
+                                      : constraints.maxWidth >= 768
+                                          ? 225
+                                          : constraints.maxWidth >= 576
+                                              ? 375
+                                              : 250,
                               child: StatisticsGrid(
-                                  crossAxisCount: crossAxisCount),
+                                crossAxisCount: crossAxisCount,
+                              ),
                             ),
-                            const SizedBox(height: 10.0),
+                            const SizedBox(height: 19.0),
                             constraints.maxWidth >= 992
                                 ? Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      SalesSection(
-                                        width: constraints.maxWidth * 0.50,
+                                      Flexible(
+                                        flex: 3,
+                                        child: SalesSection(
+                                          width: constraints.maxWidth,
+                                        ),
                                       ),
-                                      const SizedBox(width: 20.0),
-                                      CalendarSection(
-                                        width: constraints.maxWidth * 0.34,
+                                      const SizedBox(
+                                        width: 20.0,
+                                      ),
+                                      Flexible(
+                                        flex: 2,
+                                        child: CalendarSection(
+                                          width: constraints.maxWidth,
+                                        ),
                                       ),
                                     ],
                                   )
