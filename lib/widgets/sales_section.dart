@@ -115,8 +115,8 @@ class SalesSectionState extends State<SalesSection>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [
-                const Center(child: SalesGraph()),
+              children: const [
+                Center(child: SalesGraph()),
                 Center(child: SalesPieChart()),
               ],
             ),
